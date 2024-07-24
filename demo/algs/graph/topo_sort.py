@@ -1,3 +1,6 @@
+from collections import deque
+
+
 def post_dag(G):
     global time
     time = 0
@@ -22,6 +25,23 @@ def post_dag_dfs(G, v):
     time += 1
     timer[v][1] = time
     stack.append(v)
+
+
+def khan(G):
+    degree = {key: 0 for key in keys}
+    for vertex, edges in G.items():
+        for edge in edges:
+            degree[edge] += 1
+
+    queue = deque([vertex for vertex in graph if degree[vertex] == 0])
+    while queue:
+        vertex = queue.popleft()
+        stack.append(vertex)
+
+        for n in G[vertex]:
+            degree[n] -= 1
+            if degree[n] == 0:
+                stack.append(n)
 
 
 keys = [chr(i) for i in range(ord("a"), ord("q"))]
@@ -49,8 +69,11 @@ graph = {
 }
 stack = []
 
-post_dag(graph)
-stack.reverse()
+# post_dag(graph)
+# stack.reverse()
+
+khan(graph)
+
 print("Topological Sort:", stack)
-print("Timing:", timer)
-print("Spanning Tree:", parent)
+# print("Timing:", timer)
+# print("Spanning Tree:", parent)

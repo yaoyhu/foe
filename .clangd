@@ -1,4 +1,4 @@
 CompileFlags:
   Add: [
-    -I/Users/yaoyhu/Code/yaoyhu/cfoe/include,
+    -I/Users/yaoyhu/Code/yaoyhu/foe/include,
     ]
